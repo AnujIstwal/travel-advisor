@@ -15,8 +15,10 @@ import Rating from "@material-ui/lab/Rating";
 
 import useStyles from "./style.js";
 
-const PlaceDetail = ({ place }) => {
+const PlaceDetail = ({ place, selected, refProp}) => {
     const classes = useStyles();
+
+    if(selected) refProp?.current?.scrollIntoView({behavior:"smooth", block:"start"});
 
     return (
         <Card elevation={4}>
@@ -25,7 +27,7 @@ const PlaceDetail = ({ place }) => {
                 image={
                     place.photo
                         ? place.photo.images.large.url
-                        : "https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg"
+                        : "https://source.unsplash.com/1600x900/?restaurant,food"
                 }
                 title={place.name}
             />

@@ -6,9 +6,16 @@ import Rating from "@material-ui/lab/Rating";
 
 import useStyles from "./style.js";
 
-const Map = ({ setCoords, setBounds, coordinates }) => {
-    const matches = useMediaQuery("(min-width:600px)");
+const Map = ({
+    setCoords,
+    setBounds,
+    coordinates,
+    places,
+    setChildClicked,
+}) => {
+    const isDesktop = useMediaQuery("(min-width:600px)");
     const classes = useStyles();
+    if (typeof places === "undefined") places = [];
 
     return (
         <div className={classes.mapContainer}>
@@ -20,18 +27,57 @@ const Map = ({ setCoords, setBounds, coordinates }) => {
                 center={coordinates}
                 defaultZoom={14}
                 margin={[50, 50, 50, 50]}
-                options={""}
+                options={{ disableDefaultUI: true }}
                 onChange={(e) => {
                     setCoords({ lat: e.center.lat, lng: e.center.lng });
                     setBounds({ sw: e.marginBounds.sw, ne: e.marginBounds.ne });
                 }}
-                onChildClick={""}
+                yesIWantToUseGoogleMapApiInternals
+                onChildClick={(child) => {
+                    setChildClicked(child);
+                }}
             >
-                <div
-                    className={classes.markerContainer}
-                    lat={coordinates.lat}
-                    lng={coordinates.lng}
-                ></div>
+                {places.length &&
+                    places?.map((place, i) => (
+                        <div
+                            className={classes.markerContainer}
+                            lat={Number(place.latitude)}
+                            lng={Number(place.longitude)}
+                            key={i}
+                        >
+                            {!isDesktop ? (
+                                <LocationOnOutlinedIcon
+                                    color="primary"
+                                    fontSize="large"
+                                />
+                            ) : (
+                                <Paper elevation={3} className={classes.paper}>
+                                    <Typography
+                                        className={classes.typography}
+                                        variant="subtitle2"
+                                        gutterBottom
+                                    >
+                                        {place.name}
+                                    </Typography>
+                                    <img
+                                        className={classes.pointer}
+                                        src={
+                                            place.photo
+                                                ? place.photo.images.large.url
+                                                : "https://source.unsplash.com/1600x900/?restaurant,food"
+                                        }
+                                        alt={place.name}
+                                    />
+                                    <Rating
+                                        name="read-only"
+                                        size="small"
+                                        value={Number(place.rating)}
+                                        readOnly
+                                    />
+                                </Paper>
+                            )}
+                        </div>
+                    ))}
             </GoogleMapReact>
         </div>
     );
