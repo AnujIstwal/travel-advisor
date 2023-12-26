@@ -13,13 +13,6 @@ export const getPlaceData = async (type, sw, ne) => {
                     tr_latitude: ne.lat,
                     bl_longitude: sw.lng,
                     tr_longitude: ne.lng,
-                    // restaurant_tagcategory_standalone: '10591',
-                    // restaurant_tagcategory: '10591',
-                    // limit: '30',
-                    // currency: 'USD',
-                    // open_now: 'false',
-                    // lunit: 'km',
-                    // lang: 'en_US'
                 },
                 headers: {
                     "X-RapidAPI-Key": process.env.REACT_APP_RAPIDAPI_API_KEY,

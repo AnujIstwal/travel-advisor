@@ -9,11 +9,12 @@ export default makeStyles(() => ({
         width: "100px",
     },
     mapContainer: {
-        height: "100vh",
+        height: "88vh",
         width: "100%",
     },
     markerContainer: {
         position: "absolute",
+        borderRadius: "10px",
         transform: "translate(-50%, -50%)",
         zIndex: 1,
         "&:hover": { zIndex: 2 },

@@ -22,7 +22,11 @@ export default makeStyles((theme) => ({
         marginBottom: "30px",
     },
     list: {
-        height: "75vh",
+        height: "68vh",
         overflow: "auto",
+    },
+    noData: {
+        display: "flex",
+        flexDirection: "column",
     },
 }));

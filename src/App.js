@@ -89,3 +89,27 @@ const App = () => {
 };
 
 export default App;
+// {
+//     name: "Rudy's Pizza Napoletana",
+//     num_reviews: "122",
+//     price_level: "$",
+//     rating: "5.0",
+//     address: "53-54 Tottenham Court Road",
+//     phone: "01618208292",
+//     web_url: "",
+//     website: "",
+//     latitude: "30.377532000000002",
+//     longitude: "76.83579500000002",
+// },
+// {
+//     name: "Abc restarant",
+//     num_reviews: "12",
+//     price_level: "$$$",
+//     rating: "4.0",
+//     address: "Ambala Cantt",
+//     phone: "91618208292",
+//     web_url: "",
+//     website: "",
+//     latitude: "30.377532000000001",
+//     longitude: "76.83579500000001",
+// },

@@ -15,15 +15,24 @@ import Rating from "@material-ui/lab/Rating";
 
 import useStyles from "./style.js";
 
-const PlaceDetail = ({ place, selected, refProp}) => {
+const PlaceDetail = ({ place, selected, refProp }) => {
     const classes = useStyles();
 
-    if(selected) refProp?.current?.scrollIntoView({behavior:"smooth", block:"start"});
+    if (selected)
+        refProp?.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+        });
 
     return (
-        <Card elevation={4}>
+        <Card elevation={10} style={{ borderRadius: "20px", margin: "15px" }}>
             <CardMedia
-                style={{ height: 350 }}
+                style={{
+                    borderTopLeftRadius: "20px",
+                    borderTopRightRadius: "20px",
+                    height: 250,
+                    margin: "1.2rem",
+                }}
                 image={
                     place.photo
                         ? place.photo.images.large.url
@@ -50,12 +59,14 @@ const PlaceDetail = ({ place, selected, refProp}) => {
                         {place.num_reviews} review{place.num_reviews > 1 && "s"}
                     </Typography>
                 </Box>
-                <Box display="flex" justifyContent="space-between">
-                    <Typography component="legend">Price</Typography>
-                    <Typography gutterBottom variant="subtitle1">
-                        {place.price_level}
-                    </Typography>
-                </Box>
+                {place?.price_level && (
+                    <Box display="flex" justifyContent="space-between">
+                        <Typography component="legend">Price</Typography>
+                        <Typography gutterBottom variant="subtitle1">
+                            {place.price_level}
+                        </Typography>
+                    </Box>
+                )}
                 {place?.awards?.map((award) => (
                     <Box
                         display="flex"
@@ -101,15 +112,17 @@ const PlaceDetail = ({ place, selected, refProp}) => {
 
             <CardActions>
                 <Button
+                    style={{ fontWeight: "bolder" }}
                     size="small"
-                    color="primary"
+                    color="#141414"
                     onClick={() => window.open(place.web_url, "_blank")}
                 >
                     Trip Advisor
                 </Button>
                 <Button
+                    style={{ fontWeight: "bolder" }}
                     size="small"
-                    color="primary"
+                    color="#141414"
                     onClick={() => window.open(place.website, "_blank")}
                 >
                     Website

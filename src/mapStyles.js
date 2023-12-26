@@ -9,8 +9,8 @@ export default [
         ],
     },
     {
-        featureType: "all",
-        elementType: "labels.text",
+        featureType: "administrative.country",
+        elementType: "labels.text.fill",
         stylers: [
             {
                 visibility: "on",
@@ -18,11 +18,47 @@ export default [
         ],
     },
     {
-        featureType: "administrative",
-        elementType: "all",
+        featureType: "administrative.province",
+        elementType: "labels.text.fill",
         stylers: [
             {
                 visibility: "off",
+            },
+        ],
+    },
+    {
+        featureType: "administrative.locality",
+        elementType: "labels.text.fill",
+        stylers: [
+            {
+                visibility: "on",
+            },
+        ],
+    },
+    {
+        featureType: "administrative.neighborhood",
+        elementType: "geometry.fill",
+        stylers: [
+            {
+                visibility: "on",
+            },
+        ],
+    },
+    {
+        featureType: "administrative.neighborhood",
+        elementType: "labels.text.fill",
+        stylers: [
+            {
+                visibility: "on",
+            },
+        ],
+    },
+    {
+        featureType: "administrative.neighborhood",
+        elementType: "labels.text.stroke",
+        stylers: [
+            {
+                visibility: "on",
             },
         ],
     },

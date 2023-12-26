@@ -3,6 +3,7 @@ import { Autocomplete } from "@react-google-maps/api";
 import { AppBar, Toolbar, Typography, InputBase, Box } from "@material-ui/core";
 
 import SearchIcon from "@material-ui/icons/Search";
+import LocationIcon from "../../images/Location.svg";
 import useStyles from "./style.js";
 
 const Header = ({ setCoords }) => {
@@ -17,13 +18,31 @@ const Header = ({ setCoords }) => {
     };
 
     return (
-        <AppBar position="static">
+        <AppBar position="static" className={classes.appbar}>
             <Toolbar className={classes.toolbar}>
-                <Typography variant="h5" className={classes.title}>
-                    Travel Advisor
-                </Typography>
+                <div
+                    style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                    }}
+                >
+                    <img src={LocationIcon} alt="Location" width={40} />
+                    <Typography
+                        variant="h5"
+                        className={classes.title}
+                        style={{ fontWeight: "bolder" }}
+                    >
+                        Travel Advisor
+                    </Typography>
+                </div>
+
                 <Box display="flex">
-                    <Typography variant="h6" className={classes.title}>
+                    <Typography
+                        variant="h6"
+                        className={classes.title}
+                        style={{ fontWeight: 200 }}
+                    >
                         Explore new places
                     </Typography>
                     <Autocomplete

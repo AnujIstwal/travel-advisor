@@ -12,6 +12,7 @@ import {
 import PlaceDetail from "../PlaceDetail/PlaceDetail";
 
 import useStyles from "./style.js";
+import noData from "../../images/nodata.svg";
 
 const List = ({
     places,
@@ -35,7 +36,9 @@ const List = ({
 
     return (
         <div className={classes.container}>
-            <Typography variant="h4">Food & Dining around you</Typography>
+            <Typography variant="h4" style={{ fontWeight: 500 }}>
+                Food & Dining around you
+            </Typography>
             {isLoading ? (
                 <div className={classes.loading}>
                     <CircularProgress size="5rem" />
@@ -67,17 +70,34 @@ const List = ({
                             <MenuItem value="4.5">Above 4.5</MenuItem>
                         </Select>
                     </FormControl>
-                    <Grid container spacing={3} className={classes.list}>
-                        {places?.map((place, i) => (
-                            <Grid ref={elRefs[i]} key={i} item xs={12}>
-                                <PlaceDetail
-                                    selected={Number(childClicked) === i}
-                                    refProp={elRefs[i]}
-                                    place={place}
-                                />
-                            </Grid>
-                        ))}
-                    </Grid>
+                    {places && places.length ? (
+                        <Grid container spacing={3} className={classes.list}>
+                            {places?.map((place, i) => (
+                                <Grid ref={elRefs[i]} key={i} item xs={12}>
+                                    <PlaceDetail
+                                        selected={Number(childClicked) === i}
+                                        refProp={elRefs[i]}
+                                        place={place}
+                                    />
+                                </Grid>
+                            ))}
+                        </Grid>
+                    ) : (
+                        <div className={classes.noData}>
+                            <img src={noData} alt="no data loaded" />
+                            <h3
+                                style={{
+                                    margin: 10,
+                                    display: "inherit",
+                                    justifyContent: "center",
+                                    fontWeight: 400,
+                                    color: "#404040",
+                                }}
+                            >
+                                We couldn't fetch the data
+                            </h3>
+                        </div>
+                    )}
                 </>
             )}
         </div>
